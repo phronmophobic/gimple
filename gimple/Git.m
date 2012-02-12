@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "git.h"
+#import "Git.h"
 
-@implementation git
+@implementation Git
 
 -(NSString*) systemCommand:(NSString*)command curDir:(NSString*)curDir args:(NSArray*)args
 {

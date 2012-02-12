@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "git.h"
+#import "Git.h"
 
 @implementation AppDelegate
 
@@ -29,7 +29,7 @@
 
 -(IBAction) sync:(id)sender
 {
-    git* g = [[[git alloc] init] autorelease];
+    Git* g = [[[Git alloc] init] autorelease];
     [g commit:@"message"];
     [g pull];
     [g push];

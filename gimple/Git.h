@@ -23,8 +23,9 @@ typedef enum
 
 @end
 
-@interface git : NSObject
+@interface Git : NSObject
 {
+
 }
 
 -(NSString*) push;
