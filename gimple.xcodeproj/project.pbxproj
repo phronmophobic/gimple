@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D13D04714E7440C0036861F /* git.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D13D04614E7440C0036861F /* git.m */; };
 		3A6DDEEE14E73C4000010EA2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6DDEED14E73C4000010EA2 /* Cocoa.framework */; };
 		3A6DDEF814E73C4000010EA2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A6DDEF614E73C4000010EA2 /* InfoPlist.strings */; };
 		3A6DDEFA14E73C4000010EA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6DDEF914E73C4000010EA2 /* main.m */; };
@@ -30,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D13D04514E7440C0036861F /* git.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = git.h; sourceTree = "<group>"; };
+		0D13D04614E7440C0036861F /* git.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = git.m; sourceTree = "<group>"; };
 		3A6DDEE914E73C4000010EA2 /* gimple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gimple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6DDEED14E73C4000010EA2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		3A6DDEF014E73C4000010EA2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -118,6 +121,8 @@
 				3A6DDF0014E73C4000010EA2 /* AppDelegate.m */,
 				3A6DDF0214E73C4100010EA2 /* MainMenu.xib */,
 				3A6DDEF414E73C4000010EA2 /* Supporting Files */,
+				0D13D04514E7440C0036861F /* git.h */,
+				0D13D04614E7440C0036861F /* git.m */,
 			);
 			path = gimple;
 			sourceTree = "<group>";
@@ -262,6 +267,7 @@
 			files = (
 				3A6DDEFA14E73C4000010EA2 /* main.m in Sources */,
 				3A6DDF0114E73C4000010EA2 /* AppDelegate.m in Sources */,
+				0D13D04714E7440C0036861F /* git.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +439,7 @@
 				3A6DDF1D14E73C4100010EA2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3A6DDF1E14E73C4100010EA2 /* Build configuration list for PBXNativeTarget "gimpleTests" */ = {
 			isa = XCConfigurationList;
@@ -441,6 +448,7 @@
 				3A6DDF2014E73C4100010EA2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
