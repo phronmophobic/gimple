@@ -8,7 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate>{
+    IBOutlet NSTextField* reposPathTextField;
+
+}
 
 @property (assign) IBOutlet NSWindow *window;
 

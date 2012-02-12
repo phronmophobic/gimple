@@ -21,16 +21,37 @@
 	
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    NSString* path = [[NSUserDefaults standardUserDefaults] valueForKey:@"repositoryPath"];
+    if ( !path ){
+        path = @"/Users/adrian/workspace/gimple-test";
+    }
     // Insert code here to initialize your application
+    [reposPathTextField setTitleWithMnemonic:path];
+
 }
 
-
-
-
+- (IBAction)updateRepositoryPath:(id)sender{
+    
+    NSOpenPanel* panel = [NSOpenPanel openPanel];
+    [panel setCanChooseDirectories:YES];
+    [panel setAllowsMultipleSelection:NO];
+    [panel setCanChooseFiles:NO];
+    [panel setMessage:@"Choose the git repository path"];
+    
+    // Display the panel attached to the document's window.
+    [panel beginWithCompletionHandler:^(NSInteger result){
+        if (result == NSFileHandlingPanelOKButton) {
+            NSURL* url = [[panel URLs] objectAtIndex:0];
+            [reposPathTextField setTitleWithMnemonic:[url path]];
+            [[NSUserDefaults standardUserDefaults] setValue:[url path] forKey:@"repositoryPath"];
+        }
+        
+    }];
+}
 
 -(IBAction) sync:(id)sender
 {
-    Git* g = [[[Git alloc] initWithRepositoryPath:@"/Users/adrian/workspace/gimple-test/"] autorelease];
+    Git* g = [[[Git alloc] initWithRepositoryPath:[reposPathTextField stringValue]] autorelease];
 	
 	[g getChanges];
 	
