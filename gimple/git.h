@@ -8,8 +8,23 @@
 
 #import <Foundation/Foundation.h>
 
-@interface git : NSObject{
+typedef enum
+{
+	kNew,
+	kDeleted,
+	kChanged,
+} ModType;
 
+@interface Modification : NSObject
+{
+	NSString* filename;
+	ModType type;
+}
+
+@end
+
+@interface git : NSObject
+{
 }
 
 -(NSString*) push;
@@ -18,8 +33,10 @@
 - (NSString*) gitWithArg:(NSString*)arg;
 - (NSString*) gitWithArray:(NSArray*) arr;
 - (NSString*) gitWithArgs:(NSString*)arg1,...;
--(void) getLatest;
--(void) pushChanges;
+
+-(NSArray*) getChanges; // Returns NSArray of Modifications of all files changed locally.
+-(void) commitChanges:(NSString*)message; // Commits changes to local repository with <message>.
+-(NSArray*) getLatest; // git pulls and returns list of Modifications.
 -(void) cloneRepo;
 
 @end

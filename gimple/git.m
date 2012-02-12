@@ -10,6 +10,34 @@
 
 @implementation git
 
+-(NSString*) systemCommand:(NSString*)command curDir:(NSString*)curDir args:(NSArray*)args
+{
+	NSTask *task;
+    task = [[NSTask alloc] init];
+    [task setLaunchPath:command];
+    [task setCurrentDirectoryPath:curDir];	
+	
+    [task setArguments: args];
+	
+    NSPipe *pipe;
+    pipe = [NSPipe pipe];
+    [task setStandardOutput: pipe];
+	
+    NSFileHandle *file;
+    file = [pipe fileHandleForReading];
+	
+    [task launch];
+	
+    NSData *data;
+    data = [file readDataToEndOfFile];
+	
+    NSString *string;
+    string = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
+    NSLog (@"returned:\n%@", string);
+	
+    [task release];
+    return [string autorelease];
+}
 
 - (NSString*) gitWithArgs:(NSString*)arg1,...{
     va_list args;
@@ -32,33 +60,7 @@
 }
 
 - (NSString*) gitWithArray:(NSArray*) args{
-    NSTask *task;
-    task = [[NSTask alloc] init];
-    [task setLaunchPath: @"/usr/bin/git"];
-    [task setCurrentDirectoryPath:@"/Users/adrian/workspace/gimple-test/"];
-
-
-    [task setArguments: args];
-
-    NSPipe *pipe;
-    pipe = [NSPipe pipe];
-    [task setStandardOutput: pipe];
-
-    NSFileHandle *file;
-    file = [pipe fileHandleForReading];
-
-    [task launch];
-
-    NSData *data;
-    data = [file readDataToEndOfFile];
-
-    NSString *string;
-    string = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
-    NSLog (@"returned:\n%@", string);
-
-    [task release];
-    return [string autorelease];
-
+	return [self systemCommand:@"/usr/bin/git" curDir:@"/Users/adrian/workspace/gimple-test/" args:args];
 }
 
 - (NSString*) gitWithArg:(NSString*)arg{
