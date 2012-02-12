@@ -41,9 +41,6 @@ typedef enum
 - (NSString*) gitWithArgs:(NSString*)arg1,... NS_REQUIRES_NIL_TERMINATION;
 
 -(NSArray*) getChanges; // Returns NSArray of Modifications of all files changed locally.
--(void) commitChanges:(NSString*)message; // Commits changes to local repository with <message>.
--(NSArray*) getLatest; // git pulls and returns list of Modifications.
--(void) cloneRepo;
 
 @property (nonatomic, retain) NSString* repositoryPath;
 @end
