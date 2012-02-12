@@ -32,7 +32,7 @@
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-	return [[NSCell alloc] initTextCell:@"Test"];
+	return [[NSCell alloc] initTextCell:[conflicts objectAtIndex:row]];
 }
 
 @end
