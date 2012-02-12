@@ -27,12 +27,14 @@
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
+	return 3;
 	return [conflicts count];
 }
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-	return [[NSCell alloc] initTextCell:[conflicts objectAtIndex:row]];
+	//return [[NSCell alloc] initTextCell:[conflicts objectAtIndex:row]];
+	return [[NSCell alloc] initTextCell:@"Test"];
 }
 
 @end
