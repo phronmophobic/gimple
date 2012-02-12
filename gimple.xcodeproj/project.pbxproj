@@ -1,0 +1,448 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3A6DDEEE14E73C4000010EA2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6DDEED14E73C4000010EA2 /* Cocoa.framework */; };
+		3A6DDEF814E73C4000010EA2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A6DDEF614E73C4000010EA2 /* InfoPlist.strings */; };
+		3A6DDEFA14E73C4000010EA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6DDEF914E73C4000010EA2 /* main.m */; };
+		3A6DDEFE14E73C4000010EA2 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 3A6DDEFC14E73C4000010EA2 /* Credits.rtf */; };
+		3A6DDF0114E73C4000010EA2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6DDF0014E73C4000010EA2 /* AppDelegate.m */; };
+		3A6DDF0414E73C4100010EA2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6DDF0214E73C4100010EA2 /* MainMenu.xib */; };
+		3A6DDF0C14E73C4100010EA2 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6DDF0B14E73C4100010EA2 /* SenTestingKit.framework */; };
+		3A6DDF0D14E73C4100010EA2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6DDEED14E73C4000010EA2 /* Cocoa.framework */; };
+		3A6DDF1514E73C4100010EA2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A6DDF1314E73C4100010EA2 /* InfoPlist.strings */; };
+		3A6DDF1814E73C4100010EA2 /* gimpleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6DDF1714E73C4100010EA2 /* gimpleTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3A6DDF0E14E73C4100010EA2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A6DDEE014E73C4000010EA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3A6DDEE814E73C4000010EA2;
+			remoteInfo = gimple;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3A6DDEE914E73C4000010EA2 /* gimple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gimple.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A6DDEED14E73C4000010EA2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		3A6DDEF014E73C4000010EA2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		3A6DDEF114E73C4000010EA2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		3A6DDEF214E73C4000010EA2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3A6DDEF514E73C4000010EA2 /* gimple-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "gimple-Info.plist"; sourceTree = "<group>"; };
+		3A6DDEF714E73C4000010EA2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3A6DDEF914E73C4000010EA2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3A6DDEFB14E73C4000010EA2 /* gimple-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "gimple-Prefix.pch"; sourceTree = "<group>"; };
+		3A6DDEFD14E73C4000010EA2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		3A6DDEFF14E73C4000010EA2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3A6DDF0014E73C4000010EA2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3A6DDF0314E73C4100010EA2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		3A6DDF0A14E73C4100010EA2 /* gimpleTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = gimpleTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A6DDF0B14E73C4100010EA2 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		3A6DDF1214E73C4100010EA2 /* gimpleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "gimpleTests-Info.plist"; sourceTree = "<group>"; };
+		3A6DDF1414E73C4100010EA2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3A6DDF1614E73C4100010EA2 /* gimpleTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gimpleTests.h; sourceTree = "<group>"; };
+		3A6DDF1714E73C4100010EA2 /* gimpleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = gimpleTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3A6DDEE614E73C4000010EA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A6DDEEE14E73C4000010EA2 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A6DDF0614E73C4100010EA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A6DDF0C14E73C4100010EA2 /* SenTestingKit.framework in Frameworks */,
+				3A6DDF0D14E73C4100010EA2 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3A6DDEDE14E73C4000010EA2 = {
+			isa = PBXGroup;
+			children = (
+				3A6DDEF314E73C4000010EA2 /* gimple */,
+				3A6DDF1014E73C4100010EA2 /* gimpleTests */,
+				3A6DDEEC14E73C4000010EA2 /* Frameworks */,
+				3A6DDEEA14E73C4000010EA2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3A6DDEEA14E73C4000010EA2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3A6DDEE914E73C4000010EA2 /* gimple.app */,
+				3A6DDF0A14E73C4100010EA2 /* gimpleTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3A6DDEEC14E73C4000010EA2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3A6DDEED14E73C4000010EA2 /* Cocoa.framework */,
+				3A6DDF0B14E73C4100010EA2 /* SenTestingKit.framework */,
+				3A6DDEEF14E73C4000010EA2 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3A6DDEEF14E73C4000010EA2 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3A6DDEF014E73C4000010EA2 /* AppKit.framework */,
+				3A6DDEF114E73C4000010EA2 /* CoreData.framework */,
+				3A6DDEF214E73C4000010EA2 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		3A6DDEF314E73C4000010EA2 /* gimple */ = {
+			isa = PBXGroup;
+			children = (
+				3A6DDEFF14E73C4000010EA2 /* AppDelegate.h */,
+				3A6DDF0014E73C4000010EA2 /* AppDelegate.m */,
+				3A6DDF0214E73C4100010EA2 /* MainMenu.xib */,
+				3A6DDEF414E73C4000010EA2 /* Supporting Files */,
+			);
+			path = gimple;
+			sourceTree = "<group>";
+		};
+		3A6DDEF414E73C4000010EA2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3A6DDEF514E73C4000010EA2 /* gimple-Info.plist */,
+				3A6DDEF614E73C4000010EA2 /* InfoPlist.strings */,
+				3A6DDEF914E73C4000010EA2 /* main.m */,
+				3A6DDEFB14E73C4000010EA2 /* gimple-Prefix.pch */,
+				3A6DDEFC14E73C4000010EA2 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3A6DDF1014E73C4100010EA2 /* gimpleTests */ = {
+			isa = PBXGroup;
+			children = (
+				3A6DDF1614E73C4100010EA2 /* gimpleTests.h */,
+				3A6DDF1714E73C4100010EA2 /* gimpleTests.m */,
+				3A6DDF1114E73C4100010EA2 /* Supporting Files */,
+			);
+			path = gimpleTests;
+			sourceTree = "<group>";
+		};
+		3A6DDF1114E73C4100010EA2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3A6DDF1214E73C4100010EA2 /* gimpleTests-Info.plist */,
+				3A6DDF1314E73C4100010EA2 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3A6DDEE814E73C4000010EA2 /* gimple */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A6DDF1B14E73C4100010EA2 /* Build configuration list for PBXNativeTarget "gimple" */;
+			buildPhases = (
+				3A6DDEE514E73C4000010EA2 /* Sources */,
+				3A6DDEE614E73C4000010EA2 /* Frameworks */,
+				3A6DDEE714E73C4000010EA2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = gimple;
+			productName = gimple;
+			productReference = 3A6DDEE914E73C4000010EA2 /* gimple.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3A6DDF0914E73C4100010EA2 /* gimpleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A6DDF1E14E73C4100010EA2 /* Build configuration list for PBXNativeTarget "gimpleTests" */;
+			buildPhases = (
+				3A6DDF0514E73C4100010EA2 /* Sources */,
+				3A6DDF0614E73C4100010EA2 /* Frameworks */,
+				3A6DDF0714E73C4100010EA2 /* Resources */,
+				3A6DDF0814E73C4100010EA2 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3A6DDF0F14E73C4100010EA2 /* PBXTargetDependency */,
+			);
+			name = gimpleTests;
+			productName = gimpleTests;
+			productReference = 3A6DDF0A14E73C4100010EA2 /* gimpleTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3A6DDEE014E73C4000010EA2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 3A6DDEE314E73C4000010EA2 /* Build configuration list for PBXProject "gimple" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3A6DDEDE14E73C4000010EA2;
+			productRefGroup = 3A6DDEEA14E73C4000010EA2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3A6DDEE814E73C4000010EA2 /* gimple */,
+				3A6DDF0914E73C4100010EA2 /* gimpleTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3A6DDEE714E73C4000010EA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A6DDEF814E73C4000010EA2 /* InfoPlist.strings in Resources */,
+				3A6DDEFE14E73C4000010EA2 /* Credits.rtf in Resources */,
+				3A6DDF0414E73C4100010EA2 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A6DDF0714E73C4100010EA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A6DDF1514E73C4100010EA2 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3A6DDF0814E73C4100010EA2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3A6DDEE514E73C4000010EA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A6DDEFA14E73C4000010EA2 /* main.m in Sources */,
+				3A6DDF0114E73C4000010EA2 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A6DDF0514E73C4100010EA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A6DDF1814E73C4100010EA2 /* gimpleTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3A6DDF0F14E73C4100010EA2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3A6DDEE814E73C4000010EA2 /* gimple */;
+			targetProxy = 3A6DDF0E14E73C4100010EA2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3A6DDEF614E73C4000010EA2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A6DDEF714E73C4000010EA2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3A6DDEFC14E73C4000010EA2 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A6DDEFD14E73C4000010EA2 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		3A6DDF0214E73C4100010EA2 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A6DDF0314E73C4100010EA2 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		3A6DDF1314E73C4100010EA2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A6DDF1414E73C4100010EA2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3A6DDF1914E73C4100010EA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		3A6DDF1A14E73C4100010EA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		3A6DDF1C14E73C4100010EA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "gimple/gimple-Prefix.pch";
+				INFOPLIST_FILE = "gimple/gimple-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		3A6DDF1D14E73C4100010EA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "gimple/gimple-Prefix.pch";
+				INFOPLIST_FILE = "gimple/gimple-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		3A6DDF1F14E73C4100010EA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/gimple.app/Contents/MacOS/gimple";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "gimple/gimple-Prefix.pch";
+				INFOPLIST_FILE = "gimpleTests/gimpleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		3A6DDF2014E73C4100010EA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/gimple.app/Contents/MacOS/gimple";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "gimple/gimple-Prefix.pch";
+				INFOPLIST_FILE = "gimpleTests/gimpleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3A6DDEE314E73C4000010EA2 /* Build configuration list for PBXProject "gimple" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A6DDF1914E73C4100010EA2 /* Debug */,
+				3A6DDF1A14E73C4100010EA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3A6DDF1B14E73C4100010EA2 /* Build configuration list for PBXNativeTarget "gimple" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A6DDF1C14E73C4100010EA2 /* Debug */,
+				3A6DDF1D14E73C4100010EA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3A6DDF1E14E73C4100010EA2 /* Build configuration list for PBXNativeTarget "gimpleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A6DDF1F14E73C4100010EA2 /* Debug */,
+				3A6DDF2014E73C4100010EA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3A6DDEE014E73C4000010EA2 /* Project object */;
+}
