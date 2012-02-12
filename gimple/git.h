@@ -8,8 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface git : NSObject
+@interface git : NSObject{
 
+}
+
+- (NSString*) gitWithArg:(NSString*)arg;
+- (NSString*) gitWithArray:(NSArray*) arr;
+- (NSString*) gitWithArgs:(NSString*)arg1,...;
 -(void) getLatest;
 -(void) pushChanges;
 -(void) cloneRepo;
