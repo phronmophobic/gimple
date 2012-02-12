@@ -31,6 +31,7 @@ typedef enum
 
 
 
+- (id) initWithRepositoryPath:(NSString*)repositoryPath_;
 -(NSString*) push;
 -(NSString*) pull;
 -(void) commit:(NSString*)message;

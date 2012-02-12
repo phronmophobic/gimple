@@ -10,7 +10,6 @@
 
 @implementation Git
 @synthesize repositoryPath;
-@synthesize reposPath;
 
 - (void) dealloc{
 
