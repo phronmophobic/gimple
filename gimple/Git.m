@@ -9,6 +9,25 @@
 #import "Git.h"
 
 @implementation Git
+@synthesize repositoryPath;
+@synthesize reposPath;
+
+- (void) dealloc{
+
+    [repositoryPath release];
+    [super dealloc];
+}
+
+- (id) initWithRepositoryPath:(NSString*)repositoryPath_{
+
+    self = [super init];
+    if ( self ){
+        self.repositoryPath = repositoryPath_;
+    }
+
+    return self;
+}
+
 
 -(NSString*) systemCommand:(NSString*)command curDir:(NSString*)curDir args:(NSArray*)args
 {
@@ -60,7 +79,7 @@
 }
 
 - (NSString*) gitWithArray:(NSArray*) args{
-	return [self systemCommand:@"/usr/bin/git" curDir:@"/Users/adrian/workspace/gimple-test/" args:args];
+	return [self systemCommand:@"/usr/bin/git" curDir:repositoryPath args:args];
 }
 
 - (NSString*) gitWithArg:(NSString*)arg{
