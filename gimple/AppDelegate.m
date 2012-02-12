@@ -32,7 +32,9 @@
     Git* g = [[[Git alloc] init] autorelease];
     [g commit:@"message"];
     [g pull];
+    NSLog(@"conflichted:%@", [g conflictedFileNames]);
     [g push];
+
 }
 
 @end

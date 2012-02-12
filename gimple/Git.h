@@ -30,7 +30,8 @@ typedef enum
 
 -(NSString*) push;
 -(NSString*) pull;
--(NSString*) commit:(NSString*)message;
+-(void) commit:(NSString*)message;
+-(NSArray*) conflictedFileNames;
 - (NSString*) gitWithArg:(NSString*)arg;
 - (NSString*) gitWithArray:(NSArray*) arr;
 - (NSString*) gitWithArgs:(NSString*)arg1,...;

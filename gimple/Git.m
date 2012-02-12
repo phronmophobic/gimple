@@ -67,14 +67,30 @@
     return [self gitWithArray:[NSArray arrayWithObject:arg]];
 }
 
--(NSString*) commit:(NSString*)message{
-    return [self gitWithArgs:@"commit",@"-am",message,nil];
+-(void) commit:(NSString*)message{
+    [self gitWithArgs:@"add",@"--all",nil];
+    [self gitWithArgs:@"commit",@"-m",message,nil];
 }
 -(NSString*) pull{
     return [self gitWithArgs:@"pull",nil];
 }
 -(NSString*) push{
     return [self gitWithArgs:@"push",nil];
+}
+
+
+-(NSArray*) conflictedFileNames{
+    NSString* output = [self gitWithArgs:@"ls-files",@"-u",nil];
+    NSMutableSet* filenames = [NSMutableSet set];
+
+    for ( NSString* line in [output componentsSeparatedByString:@"\n"]){
+        if ( [line length] > 0 ){
+            NSString* filename = [[line componentsSeparatedByString:@"\t"] objectAtIndex:1];
+            NSLog(@"filename: \"%@\"",filename);
+            [filenames addObject:filename];
+        }
+    }
+    return [filenames allObjects];
 }
 
 
