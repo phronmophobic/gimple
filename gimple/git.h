@@ -12,6 +12,9 @@
 
 }
 
+-(NSString*) push;
+-(NSString*) pull;
+-(NSString*) commit:(NSString*)message;
 - (NSString*) gitWithArg:(NSString*)arg;
 - (NSString*) gitWithArray:(NSArray*) arr;
 - (NSString*) gitWithArgs:(NSString*)arg1,...;

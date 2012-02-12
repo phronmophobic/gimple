@@ -27,10 +27,12 @@
 
 
 
--(IBAction) pushedTheOne:(id)sender
+-(IBAction) sync:(id)sender
 {
-    [[[git alloc] init] gitWithArgs:@"status",nil];
-        
+    git* g = [[[git alloc] init] autorelease];
+    [g commit:@"message"];
+    [g pull];
+    [g push];
 }
 
 @end

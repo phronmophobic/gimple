@@ -35,7 +35,7 @@
     NSTask *task;
     task = [[NSTask alloc] init];
     [task setLaunchPath: @"/usr/bin/git"];
-    [task setCurrentDirectoryPath:@"/Users/adrian/workspace/gimple/"];
+    [task setCurrentDirectoryPath:@"/Users/adrian/workspace/gimple-test/"];
 
 
     [task setArguments: args];
@@ -64,5 +64,16 @@
 - (NSString*) gitWithArg:(NSString*)arg{
     return [self gitWithArray:[NSArray arrayWithObject:arg]];
 }
+
+-(NSString*) commit:(NSString*)message{
+    return [self gitWithArgs:@"commit",@"-am",message,nil];
+}
+-(NSString*) pull{
+    return [self gitWithArgs:@"pull",nil];
+}
+-(NSString*) push{
+    return [self gitWithArgs:@"push",nil];
+}
+
 
 @end
