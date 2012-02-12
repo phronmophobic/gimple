@@ -34,7 +34,7 @@ typedef enum
 -(NSArray*) conflictedFileNames;
 - (NSString*) gitWithArg:(NSString*)arg;
 - (NSString*) gitWithArray:(NSArray*) arr;
-- (NSString*) gitWithArgs:(NSString*)arg1,...;
+- (NSString*) gitWithArgs:(NSString*)arg1,... NS_REQUIRES_NIL_TERMINATION;
 
 -(NSArray*) getChanges; // Returns NSArray of Modifications of all files changed locally.
 -(void) commitChanges:(NSString*)message; // Commits changes to local repository with <message>.

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Git.h"
+#import "ConflictViewController.h"
 
 @implementation AppDelegate
 
@@ -30,6 +31,9 @@
 -(IBAction) sync:(id)sender
 {
     Git* g = [[[Git alloc] init] autorelease];
+	
+	[g getChanges];
+	
     [g commit:@"message"];
     [g pull];
     NSArray* conflictedFiles = [g conflictedFileNames];
@@ -37,11 +41,11 @@
         
         [g push];        
     }else{
-        NSLog(@"conflichted:%@", [g conflictedFileNames]);
+		ConflictViewController* vc = [[[ConflictViewController alloc] initWithConflicts:conflictedFiles] autorelease];
+		[vc retain];
+		[self.window.contentView addSubview:vc.view];
+        NSLog(@"conflicted:%@", [g conflictedFileNames]);
     }
-
-
-
 }
 
 @end

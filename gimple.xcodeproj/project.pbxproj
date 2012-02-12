@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D13D04714E7440C0036861F /* git.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D13D04614E7440C0036861F /* git.m */; };
+		0D13D05014E767840036861F /* Git.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D13D04F14E767830036861F /* Git.m */; };
+		0D13D05F14E7749E0036861F /* ConflictViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D13D05D14E7749E0036861F /* ConflictViewController.m */; };
+		0D13D06014E7749E0036861F /* ConflictViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D13D05E14E7749E0036861F /* ConflictViewController.xib */; };
 		3A6DDEEE14E73C4000010EA2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6DDEED14E73C4000010EA2 /* Cocoa.framework */; };
 		3A6DDEF814E73C4000010EA2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A6DDEF614E73C4000010EA2 /* InfoPlist.strings */; };
 		3A6DDEFA14E73C4000010EA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6DDEF914E73C4000010EA2 /* main.m */; };
@@ -31,8 +33,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0D13D04514E7440C0036861F /* git.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = git.h; sourceTree = "<group>"; };
-		0D13D04614E7440C0036861F /* git.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = git.m; sourceTree = "<group>"; };
+		0D13D04E14E767830036861F /* Git.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Git.h; sourceTree = "<group>"; };
+		0D13D04F14E767830036861F /* Git.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Git.m; sourceTree = "<group>"; };
+		0D13D05C14E7749E0036861F /* ConflictViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConflictViewController.h; sourceTree = "<group>"; };
+		0D13D05D14E7749E0036861F /* ConflictViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConflictViewController.m; sourceTree = "<group>"; };
+		0D13D05E14E7749E0036861F /* ConflictViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConflictViewController.xib; sourceTree = "<group>"; };
 		3A6DDEE914E73C4000010EA2 /* gimple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gimple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6DDEED14E73C4000010EA2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		3A6DDEF014E73C4000010EA2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -117,12 +122,15 @@
 		3A6DDEF314E73C4000010EA2 /* gimple */ = {
 			isa = PBXGroup;
 			children = (
+				0D13D04E14E767830036861F /* Git.h */,
+				0D13D04F14E767830036861F /* Git.m */,
 				3A6DDEFF14E73C4000010EA2 /* AppDelegate.h */,
 				3A6DDF0014E73C4000010EA2 /* AppDelegate.m */,
 				3A6DDF0214E73C4100010EA2 /* MainMenu.xib */,
 				3A6DDEF414E73C4000010EA2 /* Supporting Files */,
-				0D13D04514E7440C0036861F /* git.h */,
-				0D13D04614E7440C0036861F /* git.m */,
+				0D13D05C14E7749E0036861F /* ConflictViewController.h */,
+				0D13D05D14E7749E0036861F /* ConflictViewController.m */,
+				0D13D05E14E7749E0036861F /* ConflictViewController.xib */,
 			);
 			path = gimple;
 			sourceTree = "<group>";
@@ -231,6 +239,7 @@
 				3A6DDEF814E73C4000010EA2 /* InfoPlist.strings in Resources */,
 				3A6DDEFE14E73C4000010EA2 /* Credits.rtf in Resources */,
 				3A6DDF0414E73C4100010EA2 /* MainMenu.xib in Resources */,
+				0D13D06014E7749E0036861F /* ConflictViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,7 +276,8 @@
 			files = (
 				3A6DDEFA14E73C4000010EA2 /* main.m in Sources */,
 				3A6DDF0114E73C4000010EA2 /* AppDelegate.m in Sources */,
-				0D13D04714E7440C0036861F /* git.m in Sources */,
+				0D13D05014E767840036861F /* Git.m in Sources */,
+				0D13D05F14E7749E0036861F /* ConflictViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -78,6 +78,21 @@
     return [self gitWithArgs:@"push",nil];
 }
 
+-(NSArray*) getChanges
+{
+	NSMutableArray* changes = [[[NSMutableArray alloc] init] autorelease];
+	NSString* response = [self gitWithArgs:@"status", @"--porcelain", nil];
+	NSArray* files = [response componentsSeparatedByString:@"\n"];
+
+	for(NSString* str in files)
+	{
+		if([str length] == 0)
+			continue;
+
+		NSString* filename = [str substringFromIndex:3];
+		NSLog(@"Filename: %@\n", filename);
+	}
+}
 
 -(NSArray*) conflictedFileNames{
     NSString* output = [self gitWithArgs:@"ls-files",@"-u",nil];
@@ -90,6 +105,7 @@
             [filenames addObject:filename];
         }
     }
+	[filenames addObject:@"Testies!"];
     return [filenames allObjects];
 }
 
