@@ -26,8 +26,12 @@ typedef enum
 @interface Git : NSObject
 {
 
+    NSString* repositoryPath;
 }
 
+
+
+- (id) initWithRepositoryPath:(NSString*)repositoryPath_;
 -(NSString*) push;
 -(NSString*) pull;
 -(void) commit:(NSString*)message;
@@ -41,4 +45,5 @@ typedef enum
 -(NSArray*) getLatest; // git pulls and returns list of Modifications.
 -(void) cloneRepo;
 
+@property (nonatomic, retain) NSString* repositoryPath;
 @end

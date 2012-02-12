@@ -30,7 +30,7 @@
 
 -(IBAction) sync:(id)sender
 {
-    Git* g = [[[Git alloc] init] autorelease];
+    Git* g = [[[Git alloc] initWithRepositoryPath:@"/Users/adrian/workspace/gimple-test/"] autorelease];
 	
 	[g getChanges];
 	
