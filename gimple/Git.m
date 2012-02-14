@@ -124,9 +124,25 @@
             [filenames addObject:filename];
         }
     }
-	[filenames addObject:@"Testies!"];
+	[filenames addObject:@"Testies 1!"];
+	[filenames addObject:@"Testies 2!"];
+	[filenames addObject:@"Testies 3!"];
     return [filenames allObjects];
 }
 
+-(BOOL) chooseMine:(NSString*)filename
+{
+	return YES;
+}
+
+-(BOOL) chooseTheirs:(NSString*)filename
+{
+	return YES;
+}
+
+-(BOOL) mergeTool:(NSString*)filename
+{
+	return YES;
+}
 
 @end

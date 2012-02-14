@@ -16,6 +16,6 @@
 
 @property (nonatomic, retain) NSArray* conflicts;
 
--(id) initWithConflicts:(NSArray*)_conflicts;
++(id) createWithConflicts:(NSArray*)_conflicts;
 
 @end

@@ -25,16 +25,47 @@
 	return nil;
 }
 
+-(void) dealloc
+{
+	self.conflicts = nil;
+	[tableView release];
+}
+
++(id) createWithConflicts:(NSArray*)_conflicts
+{
+	return [[ConflictViewController alloc] initWithConflicts:_conflicts];
+}
+
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
-	return 3;
 	return [conflicts count];
 }
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-	//return [[NSCell alloc] initTextCell:[conflicts objectAtIndex:row]];
-	return [[NSCell alloc] initTextCell:@"Test"];
+	NSCell* cell = [[[NSCell alloc] initTextCell:[conflicts objectAtIndex:row]] autorelease];
+	return cell;
+}
+
+-(IBAction)pressedSegment:(id)sender
+{
+	NSSegmentedCell* cell = [sender selectedCell];
+	NSInteger clickedSegment = [cell selectedSegment];
+	
+	NSInteger row = [sender selectedRow];
+	NSLog(@"Mine: %@\n", [conflicts objectAtIndex:row]);
+}
+
+-(IBAction)pressedMerge:(id)sender
+{
+	NSInteger row = [sender selectedRow];
+	NSLog(@"Merge: %@\n", [conflicts objectAtIndex:row]);
+}
+
+-(IBAction)pressedContinue:(id)sender
+{
+	[self.view removeFromSuperview];
+	[self release];
 }
 
 @end

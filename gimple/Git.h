@@ -13,6 +13,7 @@ typedef enum
 	kNew,
 	kDeleted,
 	kChanged,
+	kMoved,
 } ModType;
 
 @interface Modification : NSObject
@@ -41,6 +42,10 @@ typedef enum
 - (NSString*) gitWithArgs:(NSString*)arg1,... NS_REQUIRES_NIL_TERMINATION;
 
 -(NSArray*) getChanges; // Returns NSArray of Modifications of all files changed locally.
+
+-(BOOL) chooseMine:(NSString*)filename;
+-(BOOL) chooseTheirs:(NSString*)filename;
+-(BOOL) mergeTool:(NSString*)filename;
 
 @property (nonatomic, retain) NSString* repositoryPath;
 @end
