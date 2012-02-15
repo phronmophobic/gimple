@@ -8,6 +8,40 @@
 
 #import "ConflictViewController.h"
 
+@interface ConflictMergeButton : NSButton
+{
+@private
+}
+@end
+
+@implementation ConflictMergeButton
+
+-(IBAction)pressed:(id)sender
+{
+	int a = 0;
+	a++;
+}
+
+@end
+
+@interface ConflictMineTheirsControl : NSSegmentedControl
+{
+@private
+    
+}
+
+@end
+
+@implementation ConflictMineTheirsControl
+
+-(IBAction)pressed:(id)sender
+{
+	int a = 0;
+	a++;
+}
+
+@end
+
 @implementation ConflictViewController
 
 @synthesize conflicts;
@@ -39,12 +73,6 @@
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
 	return [conflicts count];
-}
-
-- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
-{
-	NSCell* cell = [[[NSCell alloc] initTextCell:[conflicts objectAtIndex:row]] autorelease];
-	return cell;
 }
 
 -(IBAction)pressedSegment:(id)sender
