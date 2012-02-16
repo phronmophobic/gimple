@@ -51,8 +51,6 @@
 	if((self = [super init]))
 	{
 		self.conflicts = _conflicts;
-		[tableView setDataSource:self];
-		[tableView reloadData];
 		return self;
 	}
 	
@@ -62,7 +60,6 @@
 -(void) dealloc
 {
 	self.conflicts = nil;
-	[tableView release];
 }
 
 +(id) createWithConflicts:(NSArray*)_conflicts
@@ -75,19 +72,25 @@
 	return [conflicts count];
 }
 
--(IBAction)pressedSegment:(id)sender
+- (NSView *)tableView:(NSTableView *)tableView
+   viewForTableColumn:(NSTableColumn *)tableColumn
+                  row:(NSInteger)row
 {
-	NSSegmentedCell* cell = [sender selectedCell];
-	NSInteger clickedSegment = [cell selectedSegment];
-	
-	NSInteger row = [sender selectedRow];
-	NSLog(@"Mine: %@\n", [conflicts objectAtIndex:row]);
-}
+    // get an existing cell with the MyView identifier if it exists
+	NSView* result = nil;
+	if([tableColumn.identifier isEqualToString:@"MineTheirs"])
+		result = [tableView makeViewWithIdentifier:@"MineTheirsCell" owner:self];
+	else if([tableColumn.identifier isEqualToString:@"Merge"])
+		result = [tableView makeViewWithIdentifier:@"MergeCell" owner:self];
+	else if([tableColumn.identifier isEqualToString:@"Filename"])
+	{
+		result = [tableView makeViewWithIdentifier:@"FilenameCell" owner:self];
+		NSTextField* textField = [result.subviews objectAtIndex:0];		
+		textField.stringValue = [conflicts objectAtIndex:row];
+	}
 
--(IBAction)pressedMerge:(id)sender
-{
-	NSInteger row = [sender selectedRow];
-	NSLog(@"Merge: %@\n", [conflicts objectAtIndex:row]);
+	// return the result.
+	return result;
 }
 
 -(IBAction)pressedContinue:(id)sender

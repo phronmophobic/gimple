@@ -10,7 +10,6 @@
 
 @interface ConflictViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource>
 {
-	IBOutlet NSTableView* tableView;
 	NSArray* conflicts;
 }
 
