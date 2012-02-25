@@ -10,7 +10,7 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>{
     IBOutlet NSTextField* reposPathTextField;
-
+	IBOutlet NSTextField* workingOnTextField;
 }
 
 @property (assign) IBOutlet NSWindow *window;

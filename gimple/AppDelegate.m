@@ -49,13 +49,19 @@
     }];
 }
 
+-(NSString*) commitMessage
+{
+	// This could pop up a message box if the Working on field isn't set.
+	return ([workingOnTextField.stringValue length] == 0) ? @"Working on message not set." : workingOnTextField.stringValue;
+}
+
 -(IBAction) sync:(id)sender
 {
     Git* g = [[[Git alloc] initWithRepositoryPath:[reposPathTextField stringValue]] autorelease];
 	
 	[g getChanges];
 	
-    [g commit:@"message"];
+    [g commit:[self commitMessage]];
     [g pull];
     NSArray* conflictedFiles = [g conflictedFileNames];
     if ( [conflictedFiles count] == 0){

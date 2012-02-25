@@ -124,9 +124,7 @@
             [filenames addObject:filename];
         }
     }
-	[filenames addObject:@"Testies 1!"];
-	[filenames addObject:@"Testies 2!"];
-	[filenames addObject:@"Testies 3!"];
+
     return [filenames allObjects];
 }
 
