@@ -124,6 +124,10 @@
             [filenames addObject:filename];
         }
     }
+	
+	[filenames addObject:@"Conflict1"];
+	[filenames addObject:@"Conflict2"];
+	[filenames addObject:@"Conflict3"];
 
     return [filenames allObjects];
 }

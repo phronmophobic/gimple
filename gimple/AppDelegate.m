@@ -68,7 +68,7 @@
         
         [g push];        
     }else{
-		ConflictViewController* vc = [ConflictViewController createWithConflicts:conflictedFiles];
+		ConflictViewController* vc = [ConflictViewController createWithConflicts:conflictedFiles andGit:g];
 		[self.window.contentView addSubview:vc.view];
         NSLog(@"conflicted:%@", [g conflictedFileNames]);
     }

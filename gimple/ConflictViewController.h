@@ -8,13 +8,18 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class Git;
+
 @interface ConflictViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource>
 {
+	Git* git;
 	NSArray* conflicts;
+	IBOutlet NSTableView* conflictView;
 }
 
+@property (nonatomic, retain) Git* git;
 @property (nonatomic, retain) NSArray* conflicts;
 
-+(id) createWithConflicts:(NSArray*)_conflicts;
++(id) createWithConflicts:(NSArray*)_conflicts andGit:(Git*)_git;
 
 @end

@@ -8,49 +8,34 @@
 
 #import "ConflictViewController.h"
 
-@interface ConflictMergeButton : NSButton
+typedef enum
 {
-@private
-}
-@end
-
-@implementation ConflictMergeButton
-
--(IBAction)pressed:(id)sender
-{
-	int a = 0;
-	a++;
-}
-
-@end
-
-@interface ConflictMineTheirsControl : NSSegmentedControl
-{
-@private
-    
-}
-
-@end
-
-@implementation ConflictMineTheirsControl
-
--(IBAction)pressed:(id)sender
-{
-	int a = 0;
-	a++;
-}
-
-@end
+	kMine,
+	kTheirs,
+	kMerged,
+} ConflictChoice;
 
 @implementation ConflictViewController
 
+@synthesize git;
 @synthesize conflicts;
 
--(id) initWithConflicts:(NSArray *)_conflicts
+-(id) initWithConflicts:(NSArray *)_conflicts andGit:(Git*)_git
 {
 	if((self = [super init]))
 	{
-		self.conflicts = _conflicts;
+		NSMutableArray* array = [[[NSMutableArray alloc] init] autorelease];
+		for(NSString* filename in _conflicts)
+		{
+			NSDictionary* dict = [[[NSDictionary alloc] initWithObjectsAndKeys:
+										  @"filename", filename, 
+										  @"choice", [NSNumber numberWithInt:kMine],
+										  nil] autorelease];
+
+			[array addObject:dict];
+		}
+		self.git = _git;
+		self.conflicts = array;
 		return self;
 	}
 	
@@ -62,9 +47,9 @@
 	self.conflicts = nil;
 }
 
-+(id) createWithConflicts:(NSArray*)_conflicts
++(id) createWithConflicts:(NSArray*)_conflicts andGit:(Git*)_git
 {
-	return [[ConflictViewController alloc] initWithConflicts:_conflicts];
+	return [[ConflictViewController alloc] initWithConflicts:_conflicts andGit:_git];
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
@@ -95,6 +80,25 @@
 
 -(IBAction)pressedContinue:(id)sender
 {
+	for(NSDictionary* dict in self.conflicts)
+	{
+		NSString* filename = [dict valueForKey:@"filename"];
+		ConflictChoice choice = [[dict valueForKey:@"choice"] intValue];
+		
+		switch(choice)
+		{
+			case kMine:
+				// git checkout --ours <filename>
+				break;
+			case kTheirs:
+				// git checkout --theirs <filename>
+				break;
+			case kMerged:
+				// Do nothing - already handled.
+				break;
+		}
+	}
+
 	[self.view removeFromSuperview];
 	[self release];
 }
