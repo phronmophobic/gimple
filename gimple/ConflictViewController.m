@@ -10,9 +10,9 @@
 
 typedef enum
 {
+	kMerged = -1,
 	kMine,
 	kTheirs,
-	kMerged,
 } ConflictChoice;
 
 @implementation ConflictViewController
@@ -27,9 +27,9 @@ typedef enum
 		NSMutableArray* array = [[[NSMutableArray alloc] init] autorelease];
 		for(NSString* filename in _conflicts)
 		{
-			NSDictionary* dict = [[[NSDictionary alloc] initWithObjectsAndKeys:
-										  @"filename", filename, 
-										  @"choice", [NSNumber numberWithInt:kMine],
+			NSMutableDictionary* dict = [[[NSMutableDictionary alloc] initWithObjectsAndKeys:
+										  filename, @"filename",
+										  [NSNumber numberWithInt:kMine], @"choice",
 										  nil] autorelease];
 
 			[array addObject:dict];
@@ -57,25 +57,32 @@ typedef enum
 	return [conflicts count];
 }
 
+-(BOOL)conflictFromDict:(NSDictionary*)dict filename:(NSString**)filename choice:(ConflictChoice*)choice
+{
+	*filename = [dict objectForKey:@"filename"];
+	*choice = [[dict objectForKey:@"choice"] intValue];
+	
+	return YES;
+}
+
 - (id)tableView:(NSTableView *)aTableView
 objectValueForTableColumn:(NSTableColumn *)tableColumn
             row:(NSInteger)rowIndex
 {
-    id theRecord, theValue;
-    
+	NSString* filename;
+	ConflictChoice choice;
+	[self conflictFromDict:[conflicts objectAtIndex:rowIndex] filename:&filename choice:&choice];
 
 	if([tableColumn.identifier isEqualToString:@"MineTheirs"])
-		return nil;
-	else if([tableColumn.identifier isEqualToString:@"Merge"]){
-		return 0; // [NSNumber numberWithInt:segment];
-
-    
-	}else if([tableColumn.identifier isEqualToString:@"Filename"])
 	{
-        return @"filename";
-        
+		return [NSNumber numberWithInt:choice];
 	}
-    return theValue;
+	else if([tableColumn.identifier isEqualToString:@"Filename"])
+	{
+        return filename;
+	}
+
+    return nil;
 }
 
 - (void)tableView:(NSTableView *)aTableView
@@ -83,9 +90,17 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
    forTableColumn:(NSTableColumn *)aTableColumn
               row:(NSInteger)rowIndex
 {
-
-    // segment = [anObject intValue];
-    return;
+	NSMutableDictionary* dict = [self.conflicts objectAtIndex:rowIndex];
+	if([[aTableColumn identifier] isEqualToString:@"MineTheirs"])
+	{
+		[dict setValue:anObject forKey:@"choice"];
+	}
+	else if([[aTableColumn identifier] isEqualToString:@"Merge"])
+	{
+		// git mergetool
+		// if(success)
+			[dict setValue:[NSNumber numberWithInt:kMerged] forKey:@"choice"];
+	}
 }
 
 - (BOOL)tableView:(NSTableView *)aTableView shouldEditTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex{
