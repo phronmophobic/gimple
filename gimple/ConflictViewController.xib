@@ -115,7 +115,7 @@
 						<reference key="NSNextKeyView"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="729716702">
-							<int key="NSCellFlags">604110336</int>
+							<int key="NSCellFlags">67239424</int>
 							<int key="NSCellFlags2">134217728</int>
 							<string key="NSContents">Continue</string>
 							<reference key="NSSupport" ref="808388294"/>
@@ -255,9 +255,9 @@
 												</object>
 												<object class="NSButtonCell" key="NSDataCell" id="223111233">
 													<int key="NSCellFlags">67239424</int>
-													<int key="NSCellFlags2">134217728</int>
+													<int key="NSCellFlags2">134348800</int>
 													<string key="NSContents">Merge</string>
-													<reference key="NSSupport" ref="808388294"/>
+													<reference key="NSSupport" ref="26"/>
 													<reference key="NSControlView" ref="534077544"/>
 													<int key="NSButtonFlags">-2038284033</int>
 													<int key="NSButtonFlags2">129</int>

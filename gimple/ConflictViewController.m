@@ -7,6 +7,7 @@
 //
 
 #import "ConflictViewController.h"
+#import "Git.h"
 
 typedef enum
 {
@@ -97,7 +98,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 	}
 	else if([[aTableColumn identifier] isEqualToString:@"Merge"])
 	{
-		// git mergetool
+		[git gitWithArgs:@"mergetool", [dict valueForKey:@"filename"], nil];
 		// if(success)
 			[dict setValue:[NSNumber numberWithInt:kMerged] forKey:@"choice"];
 	}
@@ -122,17 +123,17 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 		switch(choice)
 		{
 			case kMine:
-				// git checkout --ours <filename>
+				[git gitWithArgs:@"checkout", @"--ours", filename, nil];
 				break;
 			case kTheirs:
-				// git checkout --theirs <filename>
+				[git gitWithArgs:@"checkout", @"--theirs", filename, nil];
 				break;
 			case kMerged:
 				// Do nothing - already handled.
 				break;
 		}
 	}
-
+	
 	[self.view removeFromSuperview];
 	[self release];
 }
