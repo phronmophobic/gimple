@@ -21,26 +21,33 @@ typedef enum
 @synthesize git;
 @synthesize conflicts;
 
--(id) initWithConflicts:(NSArray *)_conflicts andGit:(Git*)_git
+-(id) initWithGit:(Git*)_git
 {
 	if((self = [super init]))
 	{
-		NSMutableArray* array = [[[NSMutableArray alloc] init] autorelease];
-		for(NSString* filename in _conflicts)
-		{
-			NSMutableDictionary* dict = [[[NSMutableDictionary alloc] initWithObjectsAndKeys:
-										  filename, @"filename",
-										  [NSNumber numberWithInt:kMine], @"choice",
-										  nil] autorelease];
-
-			[array addObject:dict];
-		}
-		self.git = _git;
-		self.conflicts = array;
+        self.git = _git;
+        [self refresh];
 		return self;
 	}
 	
 	return nil;
+}
+
+- (void) refresh{
+    NSArray* _conflicts = [self.git conflictedFileNames];
+    NSMutableArray* array = [[[NSMutableArray alloc] init] autorelease];
+    for(NSString* filename in _conflicts)
+    {
+        NSMutableDictionary* dict = [[[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                      filename, @"filename",
+                                      [NSNumber numberWithInt:kMine], @"choice",
+                                      nil] autorelease];
+        
+        [array addObject:dict];
+    }
+
+    self.conflicts = array;
+    [conflictView reloadData];
 }
 
 -(void) dealloc
@@ -48,9 +55,9 @@ typedef enum
 	self.conflicts = nil;
 }
 
-+(id) createWithConflicts:(NSArray*)_conflicts andGit:(Git*)_git
++(id) createWithGit:(Git*)_git
 {
-	return [[ConflictViewController alloc] initWithConflicts:_conflicts andGit:_git];
+	return [[ConflictViewController alloc] initWithGit:_git];
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
@@ -98,9 +105,8 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 	}
 	else if([[aTableColumn identifier] isEqualToString:@"Merge"])
 	{
-		[git gitWithArgs:@"mergetool", [dict valueForKey:@"filename"], nil];
-		// if(success)
-			[dict setValue:[NSNumber numberWithInt:kMerged] forKey:@"choice"];
+        [git mergeTool:[dict valueForKey:@"filename"]];
+        [self refresh];
 	}
 }
 

@@ -45,7 +45,7 @@ typedef enum
 
 -(BOOL) chooseMine:(NSString*)filename;
 -(BOOL) chooseTheirs:(NSString*)filename;
--(BOOL) mergeTool:(NSString*)filename;
+-(void) mergeTool:(NSString*)filename;
 
 @property (nonatomic, retain) NSString* repositoryPath;
 @end
