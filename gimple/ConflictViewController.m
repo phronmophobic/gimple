@@ -8,6 +8,8 @@
 
 #import "ConflictViewController.h"
 
+static int segment = 0;
+
 @interface ConflictMergeButton : NSButton
 {
 @private
@@ -72,27 +74,46 @@
 	return [conflicts count];
 }
 
-- (NSView *)tableView:(NSTableView *)tableView
-   viewForTableColumn:(NSTableColumn *)tableColumn
-                  row:(NSInteger)row
+- (id)tableView:(NSTableView *)aTableView
+objectValueForTableColumn:(NSTableColumn *)tableColumn
+            row:(NSInteger)rowIndex
 {
-    // get an existing cell with the MyView identifier if it exists
-	NSView* result = nil;
-	if([tableColumn.identifier isEqualToString:@"MineTheirs"])
-		result = [tableView makeViewWithIdentifier:@"MineTheirsCell" owner:self];
-	else if([tableColumn.identifier isEqualToString:@"Merge"])
-		result = [tableView makeViewWithIdentifier:@"MergeCell" owner:self];
-	else if([tableColumn.identifier isEqualToString:@"Filename"])
-	{
-		result = [tableView makeViewWithIdentifier:@"FilenameCell" owner:self];
-		NSTextField* textField = [result.subviews objectAtIndex:0];		
-		textField.stringValue = [conflicts objectAtIndex:row];
-	}
+    id theRecord, theValue;
+    
 
-	// return the result.
-	return result;
+	if([tableColumn.identifier isEqualToString:@"MineTheirs"])
+		return nil;
+	else if([tableColumn.identifier isEqualToString:@"Merge"]){
+		return [NSNumber numberWithInt:segment];
+
+    
+	}else if([tableColumn.identifier isEqualToString:@"Filename"])
+	{
+        return @"filename";
+        
+	}
+    return theValue;
 }
 
+- (void)tableView:(NSTableView *)aTableView
+   setObjectValue:anObject
+   forTableColumn:(NSTableColumn *)aTableColumn
+              row:(NSInteger)rowIndex
+{
+
+    segment = [anObject intValue];
+    return;
+}
+
+- (BOOL)tableView:(NSTableView *)aTableView shouldEditTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex{
+    
+    return YES;
+}
+
+- (void)tableView:(NSTableView *)aTableView willDisplayCell:(id)aCell forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex{
+    
+    return;
+}
 -(IBAction)pressedContinue:(id)sender
 {
 	[self.view removeFromSuperview];
