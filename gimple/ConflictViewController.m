@@ -67,7 +67,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 	if([tableColumn.identifier isEqualToString:@"MineTheirs"])
 		return nil;
 	else if([tableColumn.identifier isEqualToString:@"Merge"]){
-		return [NSNumber numberWithInt:segment];
+		return 0; // [NSNumber numberWithInt:segment];
 
     
 	}else if([tableColumn.identifier isEqualToString:@"Filename"])
@@ -84,7 +84,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
               row:(NSInteger)rowIndex
 {
 
-    segment = [anObject intValue];
+    // segment = [anObject intValue];
     return;
 }
 
