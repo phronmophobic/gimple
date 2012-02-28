@@ -129,10 +129,10 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 		switch(choice)
 		{
 			case kMine:
-				[git gitWithArgs:@"checkout", @"--ours", filename, nil];
+				[git chooseMine:filename];
 				break;
 			case kTheirs:
-				[git gitWithArgs:@"checkout", @"--theirs", filename, nil];
+				[git chooseTheirs:filename];
 				break;
 			case kMerged:
 				// Do nothing - already handled.

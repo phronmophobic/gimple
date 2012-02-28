@@ -134,11 +134,13 @@
 
 -(BOOL) chooseMine:(NSString*)filename
 {
+	[self gitWithArgs:@"checkout", @"--ours", filename, nil];
 	return YES;
 }
 
 -(BOOL) chooseTheirs:(NSString*)filename
 {
+	[self gitWithArgs:@"checkout", @"--theirs", filename, nil];
 	return YES;
 }
 
