@@ -59,18 +59,26 @@
 {
     Git* g = [[[Git alloc] initWithRepositoryPath:[reposPathTextField stringValue]] autorelease];
 	
-	[g getChanges];
-	
-    [g commit:[self commitMessage]];
-    [g pull];
     NSArray* conflictedFiles = [g conflictedFileNames];
-    if ( [conflictedFiles count] == 0){
-        
-        [g push];        
-    }else{
-		ConflictViewController* vc = [ConflictViewController createWithConflicts:conflictedFiles andGit:g];
+    if ( [conflictedFiles count] > 0){
+		ConflictViewController* vc = [ConflictViewController createWithGit:g];
 		[self.window.contentView addSubview:vc.view];
         NSLog(@"conflicted:%@", [g conflictedFileNames]);
+    }else{
+    
+        [g getChanges];
+        
+        [g commit:[self commitMessage]];
+        [g pull];
+        conflictedFiles = [g conflictedFileNames];
+        if ( [conflictedFiles count] == 0){
+            
+            [g push];        
+        }else{
+            ConflictViewController* vc = [ConflictViewController createWithGit:g];
+            [self.window.contentView addSubview:vc.view];
+            NSLog(@"conflicted:%@", [g conflictedFileNames]);
+        }
     }
 }
 

@@ -20,6 +20,6 @@
 @property (nonatomic, retain) Git* git;
 @property (nonatomic, retain) NSArray* conflicts;
 
-+(id) createWithConflicts:(NSArray*)_conflicts andGit:(Git*)_git;
-
++(id) createWithGit:(Git*)_git;
+- (void) refresh;
 @end

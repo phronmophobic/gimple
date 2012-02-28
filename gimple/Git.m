@@ -125,9 +125,9 @@
         }
     }
 	
-	[filenames addObject:@"Conflict1"];
-	[filenames addObject:@"Conflict2"];
-	[filenames addObject:@"Conflict3"];
+//	[filenames addObject:@"Conflict1"];
+//	[filenames addObject:@"Conflict2"];
+//	[filenames addObject:@"Conflict3"];
 
     return [filenames allObjects];
 }
@@ -142,9 +142,9 @@
 	return YES;
 }
 
--(BOOL) mergeTool:(NSString*)filename
+-(void) mergeTool:(NSString*)filename
 {
-	return YES;
+    [self gitWithArgs:@"mergetool",@"-y", filename, nil];
 }
 
 @end
