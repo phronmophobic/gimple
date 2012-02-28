@@ -10,6 +10,7 @@
 
 @implementation Git
 @synthesize repositoryPath;
+@synthesize thread;
 
 - (void) dealloc{
 
@@ -22,11 +23,23 @@
     self = [super init];
     if ( self ){
         self.repositoryPath = repositoryPath_;
+		self.thread = [[[NSThread alloc] initWithTarget:self selector:@selector(threadMain) object:nil] autorelease];
+		[self.thread start];
     }
 
     return self;
 }
 
+-(void) threadMain
+{
+	[[NSRunLoop currentRunLoop] addPort:[[NSPort alloc] init] forMode:NSDefaultRunLoopMode];
+	CFRunLoopRun();
+}
+
+-(void) success: (NSString*)string
+{
+	NSLog(@"Success! %@", string);
+}
 
 -(NSString*) systemCommand:(NSString*)command curDir:(NSString*)curDir args:(NSArray*)args
 {
@@ -53,6 +66,8 @@
     string = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
     NSLog (@"returned:\n%@", string);
 	
+	[self performSelectorOnMainThread:@selector(success:) withObject:string waitUntilDone:YES];
+	
     [task release];
     return [string autorelease];
 }
@@ -73,8 +88,10 @@
         }
     }
 
+	[self performSelector:@selector(gitWithArray:) onThread:thread withObject:argArr waitUntilDone:NO];
+	return nil;
 
-    return [self gitWithArray:argArr];
+//    return [self gitWithArray:argArr];
 }
 
 - (NSString*) gitWithArray:(NSArray*) args{
@@ -82,7 +99,7 @@
 }
 
 - (NSString*) gitWithArg:(NSString*)arg{
-    return [self gitWithArray:[NSArray arrayWithObject:arg]];
+    return [self gitWithArgs:arg, nil];
 }
 
 -(void) commit:(NSString*)message{

@@ -28,9 +28,8 @@ typedef enum
 {
 
     NSString* repositoryPath;
+	NSThread* thread;
 }
-
-
 
 - (id) initWithRepositoryPath:(NSString*)repositoryPath_;
 -(NSString*) push;
@@ -48,4 +47,6 @@ typedef enum
 -(void) mergeTool:(NSString*)filename;
 
 @property (nonatomic, retain) NSString* repositoryPath;
+@property (nonatomic, retain) NSThread* thread;
+
 @end
