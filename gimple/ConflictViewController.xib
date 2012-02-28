@@ -182,11 +182,9 @@
 													<reference key="NSSupport" ref="808388294"/>
 													<reference key="NSControlView" ref="534077544"/>
 													<bool key="NSDrawsBackground">YES</bool>
-													<object class="NSColor" key="NSBackgroundColor" id="356761428">
-														<int key="NSColorSpace">6</int>
-														<string key="NSCatalogName">System</string>
-														<string key="NSColorName">controlBackgroundColor</string>
-														<reference key="NSColor" ref="662602235"/>
+													<object class="NSColor" key="NSBackgroundColor">
+														<int key="NSColorSpace">3</int>
+														<bytes key="NSWhite">MCAwAA</bytes>
 													</object>
 													<reference key="NSTextColor" ref="328180377"/>
 												</object>
@@ -300,7 +298,12 @@
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="534077544"/>
 								<reference key="NSDocView" ref="534077544"/>
-								<reference key="NSBGColor" ref="356761428"/>
+								<object class="NSColor" key="NSBGColor">
+									<int key="NSColorSpace">6</int>
+									<string key="NSCatalogName">System</string>
+									<string key="NSColorName">controlBackgroundColor</string>
+									<reference key="NSColor" ref="662602235"/>
+								</object>
 								<int key="NScvFlags">4</int>
 							</object>
 							<object class="NSScroller" id="991124358">
