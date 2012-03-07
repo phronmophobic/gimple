@@ -13,12 +13,13 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
+@synthesize git;
 
 - (void)dealloc
 {
     [super dealloc];
 }
-	
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     NSString* path = [[NSUserDefaults standardUserDefaults] valueForKey:@"repositoryPath"];
@@ -28,6 +29,8 @@
     // Insert code here to initialize your application
     [reposPathTextField setTitleWithMnemonic:path];
 
+	git = [[[Git alloc] initWithRepositoryPath:[reposPathTextField stringValue]] autorelease];
+	git.syncDelegate = self;
 }
 
 - (IBAction)updateRepositoryPath:(id)sender{
@@ -44,6 +47,7 @@
             NSURL* url = [[panel URLs] objectAtIndex:0];
             [reposPathTextField setTitleWithMnemonic:[url path]];
             [[NSUserDefaults standardUserDefaults] setValue:[url path] forKey:@"repositoryPath"];
+			git.repositoryPath = [url path];
         }
         
     }];
@@ -57,29 +61,19 @@
 
 -(IBAction) sync:(id)sender
 {
-    Git* g = [[[Git alloc] initWithRepositoryPath:[reposPathTextField stringValue]] autorelease];
+	[git sync:[self commitMessage]];
+}
+
+-(void) syncComplete
+{
 	
-    NSArray* conflictedFiles = [g conflictedFileNames];
-    if ( [conflictedFiles count] > 0){
-		ConflictViewController* vc = [ConflictViewController createWithGit:g];
-		[self.window.contentView addSubview:vc.view];
-        NSLog(@"conflicted:%@", [g conflictedFileNames]);
-    }else{
-    
-        [g getChanges];
-        
-        [g commit:[self commitMessage]];
-        [g pull];
-        conflictedFiles = [g conflictedFileNames];
-        if ( [conflictedFiles count] == 0){
-            
-            [g push];        
-        }else{
-            ConflictViewController* vc = [ConflictViewController createWithGit:g];
-            [self.window.contentView addSubview:vc.view];
-            NSLog(@"conflicted:%@", [g conflictedFileNames]);
-        }
-    }
+}
+
+-(void) syncConflicts:(NSArray*)conflicts
+{
+	ConflictViewController* vc = [ConflictViewController createWithGit:git];
+	[self.window.contentView addSubview:vc.view];
+	NSLog(@"conflicted:%@", conflicts);
 }
 
 @end

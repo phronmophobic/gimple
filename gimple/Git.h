@@ -8,45 +8,42 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum
-{
-	kNew,
-	kDeleted,
-	kChanged,
-	kMoved,
-} ModType;
+@protocol GitProgressDelegate <NSObject>
 
-@interface Modification : NSObject
-{
-	NSString* filename;
-	ModType type;
-}
+-(void) setProgress:(float)progress;
+-(void) setStatus:(NSString*)status;
 
 @end
+typedef id<GitProgressDelegate> GitProgressDelegate;
+
+@protocol GitSyncDelegate <NSObject>
+
+-(void) syncError;
+-(void) syncComplete;
+-(void) syncConflicts:(NSArray*)conflicts;
+
+@end
+typedef id<GitSyncDelegate> GitSyncDelegate;
 
 @interface Git : NSObject
 {
-
     NSString* repositoryPath;
 	NSThread* thread;
+	GitSyncDelegate syncDelegate;
+	GitProgressDelegate progressDelegate;
 }
 
-- (id) initWithRepositoryPath:(NSString*)repositoryPath_;
--(NSString*) push;
--(NSString*) pull;
--(void) commit:(NSString*)message;
--(NSArray*) conflictedFileNames;
-- (NSString*) gitWithArg:(NSString*)arg;
-- (NSString*) gitWithArray:(NSArray*) arr;
-- (NSString*) gitWithArgs:(NSString*)arg1,... NS_REQUIRES_NIL_TERMINATION;
+@property (nonatomic, retain) NSString* repositoryPath;
+@property (nonatomic, retain) NSThread* thread;
+@property (nonatomic, retain) GitSyncDelegate syncDelegate;
+@property (nonatomic, retain) GitProgressDelegate progressDelegate;
 
--(NSArray*) getChanges; // Returns NSArray of Modifications of all files changed locally.
+-(id) initWithRepositoryPath:(NSString*)repositoryPath_;
+
+-(void) sync:(NSString*)commitMsg;
 
 -(BOOL) chooseMine:(NSString*)filename;
 -(BOOL) chooseTheirs:(NSString*)filename;
 -(void) mergeTool:(NSString*)filename;
-
-@property (nonatomic, retain) NSString* repositoryPath;
-@property (nonatomic, retain) NSThread* thread;
 
 @end

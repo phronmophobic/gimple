@@ -8,11 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>{
+#import "Git.h"
+
+@interface AppDelegate : NSObject <NSApplicationDelegate, GitSyncDelegate>{
     IBOutlet NSTextField* reposPathTextField;
 	IBOutlet NSTextField* workingOnTextField;
+	Git* git;
 }
 
 @property (assign) IBOutlet NSWindow *window;
+@property (nonatomic, retain) Git* git;
 
 @end

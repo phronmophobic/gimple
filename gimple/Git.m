@@ -11,6 +11,8 @@
 @implementation Git
 @synthesize repositoryPath;
 @synthesize thread;
+@synthesize syncDelegate;
+@synthesize progressDelegate;
 
 - (void) dealloc{
 
@@ -36,13 +38,12 @@
 	CFRunLoopRun();
 }
 
--(void) success: (NSString*)string
+-(void) systemCommand:(NSDictionary*)params
 {
-	NSLog(@"Success! %@", string);
-}
+	NSString* command = [params objectForKey:@"command"];
+	NSString* curDir = [params objectForKey:@"curDir"];
+	NSArray* args = [params objectForKey:@"args"];
 
--(NSString*) systemCommand:(NSString*)command curDir:(NSString*)curDir args:(NSArray*)args
-{
 	NSTask *task;
     task = [[NSTask alloc] init];
     [task setLaunchPath:command];
@@ -63,13 +64,17 @@
     data = [file readDataToEndOfFile];
 	
     NSString *string;
-    string = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
+    string = [[[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding] autorelease];
     NSLog (@"returned:\n%@", string);
 	
-	[self performSelectorOnMainThread:@selector(success:) withObject:string waitUntilDone:YES];
+	[self performSelectorOnMainThread:@selector(sysCommandComplete:) withObject:string waitUntilDone:YES];
 	
     [task release];
-    return [string autorelease];
+}
+
+-(void) sysCommandComplete: (NSString*)string
+{
+	NSLog(@"Success! %@", string);
 }
 
 - (NSString*) gitWithArgs:(NSString*)arg1,...{
@@ -88,19 +93,32 @@
         }
     }
 
-	[self performSelector:@selector(gitWithArray:) onThread:thread withObject:argArr waitUntilDone:NO];
+	[self gitWithArray:argArr];
+//	[self performSelector:@selector(gitWithArray:) onThread:thread withObject:argArr waitUntilDone:NO];
 	return nil;
 
 //    return [self gitWithArray:argArr];
 }
 
-- (NSString*) gitWithArray:(NSArray*) args{
-	return [self systemCommand:@"/usr/bin/git" curDir:repositoryPath args:args];
+-(NSString*) gitExe
+{
+	return @"/usr/bin/git";
 }
 
-- (NSString*) gitWithArg:(NSString*)arg{
-    return [self gitWithArgs:arg, nil];
+- (void) gitWithArray:(NSArray*) args{
+	NSDictionary* dict = [[[NSDictionary alloc] initWithObjectsAndKeys:
+							[self gitExe], @"command",
+							repositoryPath, @"curDir",
+							args, @"args",
+						 nil] autorelease];
+	
+	[self performSelector:@selector(systemCommand:) onThread:thread withObject:dict waitUntilDone:NO];
+//	return [self systemCommand:@"/usr/bin/git" curDir:repositoryPath args:args];
 }
+
+//- (NSString*) gitWithArg:(NSString*)arg{
+//    return [self gitWithArgs:arg, nil];
+//}
 
 -(void) commit:(NSString*)message{
     [self gitWithArgs:@"add",@"--all",nil];
@@ -117,23 +135,23 @@
     NSMutableArray* changes = [[[NSMutableArray alloc] init] autorelease];
     NSString* response = [self gitWithArgs:@"status", @"--porcelain", nil];
     NSArray* files = [response componentsSeparatedByString:@"\n"];
-
+	
     for(NSString* str in files){
         if([str length] == 0)
             continue;
-
+		
         NSString* filename = [str substringFromIndex:3];
         [changes addObject:filename];
         NSLog(@"Filename: %@\n", filename);
     }
-
+	
     return changes;
 }
 
 -(NSArray*) conflictedFileNames{
     NSString* output = [self gitWithArgs:@"ls-files",@"-u",nil];
     NSMutableSet* filenames = [NSMutableSet set];
-
+	
     for ( NSString* line in [output componentsSeparatedByString:@"\n"]){
         if ( [line length] > 0 ){
             NSString* filename = [[line componentsSeparatedByString:@"\t"] objectAtIndex:1];
@@ -145,8 +163,37 @@
 //	[filenames addObject:@"Conflict1"];
 //	[filenames addObject:@"Conflict2"];
 //	[filenames addObject:@"Conflict3"];
-
+	
     return [filenames allObjects];
+}
+
+-(void)asyncSync:(NSString*)commitMsg
+{
+	NSArray* conflictedFiles = [self conflictedFileNames];
+    if ( [conflictedFiles count] > 0){
+		[syncDelegate performSelectorOnMainThread:@selector(syncConflicts:) withObject:conflictedFiles waitUntilDone:YES];		
+    }else{
+		
+        [self getChanges];
+        
+        [self commit:commitMsg];
+        [self pull];
+        conflictedFiles = [self conflictedFileNames];
+        if ( [conflictedFiles count] > 0){
+			[syncDelegate performSelectorOnMainThread:@selector(syncConflicts:) withObject:conflictedFiles waitUntilDone:YES];
+        }else{
+            [self push];        
+			[syncDelegate performSelectorOnMainThread:@selector(syncComplete) withObject:nil waitUntilDone:YES];
+        }
+    }
+	
+	// Shouldn't be able to get here, but just in case:
+	[syncDelegate performSelectorOnMainThread:@selector(syncError) withObject:nil waitUntilDone:YES];
+}
+
+-(void)sync:(NSString*)commitMsg
+{
+	[self performSelector:@selector(asyncSync:) onThread:thread withObject:commitMsg waitUntilDone:NO];
 }
 
 -(BOOL) chooseMine:(NSString*)filename
