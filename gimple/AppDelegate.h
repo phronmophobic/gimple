@@ -13,6 +13,9 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate, GitSyncDelegate>{
     IBOutlet NSTextField* reposPathTextField;
 	IBOutlet NSTextField* workingOnTextField;
+	IBOutlet NSProgressIndicator* progressBar;
+	IBOutlet NSTextField* progressStatus;
+	
 	Git* git;
 }
 

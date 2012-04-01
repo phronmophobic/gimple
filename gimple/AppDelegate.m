@@ -31,6 +31,7 @@
 
 	git = [[[Git alloc] initWithRepositoryPath:[reposPathTextField stringValue]] autorelease];
 	git.syncDelegate = self;
+	git.progressDelegate = self;
 }
 
 - (IBAction)updateRepositoryPath:(id)sender{
@@ -74,6 +75,16 @@
 	ConflictViewController* vc = [ConflictViewController createWithGit:git];
 	[self.window.contentView addSubview:vc.view];
 	NSLog(@"conflicted:%@", conflicts);
+}
+
+-(void) setProgress:(NSNumber*)progress
+{
+	progressBar.doubleValue = [progress doubleValue];
+}
+
+-(void) setStatus:(NSString*)status
+{
+	progressStatus.stringValue = status;
 }
 
 @end

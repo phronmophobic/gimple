@@ -10,7 +10,7 @@
 
 @protocol GitProgressDelegate <NSObject>
 
--(void) setProgress:(float)progress;
+-(void) setProgress:(NSNumber*)progress;
 -(void) setStatus:(NSString*)status;
 
 @end
