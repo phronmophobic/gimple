@@ -190,6 +190,12 @@
     return [filenames allObjects];
 }
 
+-(void)setProgress:(double)progress andStatus:(NSString*)status
+{
+	[progressDelegate performSelectorOnMainThread:@selector(setStatus:) withObject:status waitUntilDone:NO];
+	[progressDelegate performSelectorOnMainThread:@selector(setProgress:) withObject:[NSNumber numberWithDouble:progress] waitUntilDone:NO];
+}
+
 -(void)asyncSync
 {
     //     NSArray* conflictedFiles = [self conflictedFileNames];
@@ -214,21 +220,27 @@
     
     if ( [self hasConflicts]){
         NSLog(@"== Need to resolve Conflicts ==");
+		[self setProgress:0.0 andStatus:@"Need to resolve conflicts."];
         [syncDelegate performSelectorOnMainThread:@selector(syncConflicts) withObject:nil waitUntilDone:NO];
     }else if ( [self hasChanges] ){
         NSLog(@"== Need to make a commit ==");
+		[self setProgress:25.0 andStatus:@"Committing changes."];
         [syncDelegate performSelectorOnMainThread:@selector(makeCommit) withObject:nil waitUntilDone:YES];
     }else{// no changes
         NSLog(@"== Pulling... ==");
+		[self setProgress:50.0 andStatus:@"Pulling changes."];
 
         [self pull];
         if ( [self hasConflicts] ){
             NSLog(@"== Pull and there are conflicts. Need to resolve conflicts ==");
+			[self setProgress:75.0 andStatus:@"Need to resolve conflicts."];
             [syncDelegate performSelectorOnMainThread:@selector(syncConflicts) withObject:nil waitUntilDone:NO];
         }else{
             NSLog(@"== Push ==");
+			[self setProgress:75.0 andStatus:@"Pushing changes."];
             bool success = [self push];
             NSLog(@"push success: %d", success);
+			[self setProgress:100.0 andStatus:@"Sync complete!"];
         }
     }
     
