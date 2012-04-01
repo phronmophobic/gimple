@@ -8,6 +8,12 @@
 
 #import "Git.h"
 
+@interface Git(Private)
+- (void) gitWithArray:(NSArray*) args;
+- (NSArray*) conflictedFileNames;
+
+@end
+
 @implementation Git
 @synthesize repositoryPath;
 @synthesize thread;

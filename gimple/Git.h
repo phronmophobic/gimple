@@ -14,7 +14,7 @@
 -(void) setStatus:(NSString*)status;
 
 @end
-typedef id<GitProgressDelegate> GitProgressDelegate;
+typedef NSObject<GitProgressDelegate> GitProgressDelegate;
 
 @protocol GitSyncDelegate <NSObject>
 
@@ -23,20 +23,20 @@ typedef id<GitProgressDelegate> GitProgressDelegate;
 -(void) syncConflicts:(NSArray*)conflicts;
 
 @end
-typedef id<GitSyncDelegate> GitSyncDelegate;
+typedef NSObject<GitSyncDelegate> GitSyncDelegate;
 
 @interface Git : NSObject
 {
     NSString* repositoryPath;
 	NSThread* thread;
-	GitSyncDelegate syncDelegate;
-	GitProgressDelegate progressDelegate;
+	GitSyncDelegate* syncDelegate;
+	GitProgressDelegate* progressDelegate;
 }
 
 @property (nonatomic, retain) NSString* repositoryPath;
 @property (nonatomic, retain) NSThread* thread;
-@property (nonatomic, retain) GitSyncDelegate syncDelegate;
-@property (nonatomic, retain) GitProgressDelegate progressDelegate;
+@property (nonatomic, retain) GitSyncDelegate* syncDelegate;
+@property (nonatomic, retain) GitProgressDelegate* progressDelegate;
 
 -(id) initWithRepositoryPath:(NSString*)repositoryPath_;
 
