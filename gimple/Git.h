@@ -20,7 +20,8 @@ typedef NSObject<GitProgressDelegate> GitProgressDelegate;
 
 -(void) syncError;
 -(void) syncComplete;
--(void) syncConflicts:(NSArray*)conflicts;
+-(void) syncConflicts;
+-(void) makeCommit;
 
 @end
 typedef NSObject<GitSyncDelegate> GitSyncDelegate;
@@ -40,10 +41,11 @@ typedef NSObject<GitSyncDelegate> GitSyncDelegate;
 
 -(id) initWithRepositoryPath:(NSString*)repositoryPath_;
 
--(void) sync:(NSString*)commitMsg;
+-(void) sync;
 
 -(BOOL) chooseMine:(NSString*)filename;
 -(BOOL) chooseTheirs:(NSString*)filename;
 -(void) mergeTool:(NSString*)filename;
+- (NSArray*) conflictedFileNames;
 
 @end

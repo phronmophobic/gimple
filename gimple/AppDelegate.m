@@ -62,7 +62,7 @@
 
 -(IBAction) sync:(id)sender
 {
-	[git sync:[self commitMessage]];
+	[git sync];
 }
 
 -(void) syncComplete
@@ -70,11 +70,15 @@
 	
 }
 
--(void) syncConflicts:(NSArray*)conflicts
+-(void) syncConflicts
 {
 	ConflictViewController* vc = [ConflictViewController createWithGit:git];
 	[self.window.contentView addSubview:vc.view];
-	NSLog(@"conflicted:%@", conflicts);
+}
+
+-(void) makeCommit{
+    
+    [self commitMessage];
 }
 
 -(void) setProgress:(NSNumber*)progress
