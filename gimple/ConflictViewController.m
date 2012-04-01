@@ -141,6 +141,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 	}
 	
 	[self.view removeFromSuperview];
+    [git sync];
 	[self release];
 }
 
