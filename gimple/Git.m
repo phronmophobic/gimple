@@ -9,7 +9,7 @@
 #import "Git.h"
 
 @interface Git(Private)
-- (void) gitWithArray:(NSArray*) args;
+- (NSString*) gitWithArray:(NSArray*) args;
 
 @end
 
@@ -85,6 +85,17 @@
 //	NSLog(@"Success! %@", string);
 //}
 
+- (NSString*) gitWithArray:(NSArray*) args{
+    //	NSDictionary* dict = [[[NSDictionary alloc] initWithObjectsAndKeys:
+    //							[self gitExe], @"command",
+    //							repositoryPath, @"curDir",
+    //							args, @"args",
+    //						 nil] autorelease];
+	
+    //	[self performSelector:@selector(systemCommand:) onThread:thread withObject:dict waitUntilDone:NO];
+	return [self systemCommand:@"/usr/bin/git" curDir:repositoryPath args:args];
+}
+
 - (NSString*) gitWithArgs:(NSString*)arg1,...{
     va_list args;
     va_start(args, arg1);
@@ -101,9 +112,9 @@
         }
     }
 
-	[self gitWithArray:argArr];
+	return [self gitWithArray:argArr];
 //	[self performSelector:@selector(gitWithArray:) onThread:thread withObject:argArr waitUntilDone:NO];
-	return nil;
+//	return nil;
 
 //    return [self gitWithArray:argArr];
 }
@@ -113,16 +124,7 @@
 	return @"/usr/bin/git";
 }
 
-- (NSString*) gitWithArray:(NSArray*) args{
-//	NSDictionary* dict = [[[NSDictionary alloc] initWithObjectsAndKeys:
-//							[self gitExe], @"command",
-//							repositoryPath, @"curDir",
-//							args, @"args",
-//						 nil] autorelease];
-	
-//	[self performSelector:@selector(systemCommand:) onThread:thread withObject:dict waitUntilDone:NO];
-	return [self systemCommand:@"/usr/bin/git" curDir:repositoryPath args:args];
-}
+
 
 //- (NSString*) gitWithArg:(NSString*)arg{
 //    return [self gitWithArgs:arg, nil];

@@ -78,7 +78,9 @@
 
 -(void) makeCommit{
     
-    [self commitMessage];
+
+    [git commit:[self commitMessage]];
+    [git sync];
 }
 
 -(void) setProgress:(NSNumber*)progress
