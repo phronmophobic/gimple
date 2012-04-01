@@ -139,7 +139,7 @@
 }
 -(bool) push{
     
-    NSString* output =  [self gitWithArgs:@"push",@"origin",@"HEAD",nil];
+    NSString* output =  [self gitWithArgs:@"push",@"--porcelain",@"origin",@"HEAD",nil];
     for ( NSString* line in [output componentsSeparatedByString:@"\n"]){
         if ( [line hasPrefix:@"!"]){
             return false;
