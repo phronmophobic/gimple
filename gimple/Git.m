@@ -269,9 +269,9 @@
 
 -(void) mergeTool:(NSString*)filename
 {
-    NSTask* yesTask = [[[NSTask alloc] init] autorelease];
-    [yesTask setLaunchPath:@"/usr/bin/yes"];
-    [yesTask setArguments:[NSArray arrayWithObject:@"no"]];
+    NSTask* echoTask = [[[NSTask alloc] init] autorelease];
+    [echoTask setLaunchPath:@"/bin/echo"];
+    [echoTask setArguments:[NSArray arrayWithObject:@"no"]];
 
     
 	NSTask *task;
@@ -282,12 +282,13 @@
     [task setArguments:[NSArray arrayWithObjects:@"mergetool",@"-y",@"--",filename, nil]];
     
     NSPipe* pipe = [NSPipe pipe];
-    [yesTask setStandardOutput:pipe];
+    [echoTask setStandardOutput:pipe];
     [task setStandardInput:pipe];
-    [yesTask launch];
+    [echoTask launch];
     [task launch];
 
     [task waitUntilExit];
+    [echoTask terminate];
 
 }
 
