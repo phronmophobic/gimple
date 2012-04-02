@@ -139,6 +139,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 				break;
 		}
 	}
+    [git commit:@"merge with conflicts"];
 	
 	[self.view removeFromSuperview];
     [git sync];
