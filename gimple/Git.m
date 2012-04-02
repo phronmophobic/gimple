@@ -256,12 +256,14 @@
 -(BOOL) chooseMine:(NSString*)filename
 {
 	[self gitWithArgs:@"checkout", @"--ours",@"--", filename, nil];
+	[self gitWithArgs:@"add", @"--u",@"--", filename, nil];
 	return YES;
 }
 
 -(BOOL) chooseTheirs:(NSString*)filename
 {
 	[self gitWithArgs:@"checkout", @"--theirs", @"--",filename, nil];
+	[self gitWithArgs:@"add", @"--u",@"--", filename, nil];
 	return YES;
 }
 
