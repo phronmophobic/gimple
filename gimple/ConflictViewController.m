@@ -33,6 +33,22 @@ typedef enum
 	return nil;
 }
 
+
+-(void) dealloc
+{
+	self.conflicts = nil;
+}
+
+
+- (void) commitAndClose{
+    [git commit:@"merge with conflicts"];
+	
+    
+    [git sync];
+	[self.view removeFromSuperview];
+	[self release];
+}
+
 - (void) refresh{
     NSArray* _conflicts = [self.git conflictedFileNames];
     NSMutableArray* array = [[[NSMutableArray alloc] init] autorelease];
@@ -45,15 +61,14 @@ typedef enum
         
         [array addObject:dict];
     }
-
+    
     self.conflicts = array;
     [conflictView reloadData];
+    if ( [conflicts count] == 0){
+        [self commitAndClose];
+    }
 }
 
--(void) dealloc
-{
-	self.conflicts = nil;
-}
 
 +(id) createWithGit:(Git*)_git
 {
@@ -139,11 +154,8 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 				break;
 		}
 	}
-    [git commit:@"merge with conflicts"];
-	
-	[self.view removeFromSuperview];
-    [git sync];
-	[self release];
+    [self commitAndClose];
 }
+
 
 @end
