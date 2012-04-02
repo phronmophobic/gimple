@@ -255,19 +255,19 @@
 
 -(BOOL) chooseMine:(NSString*)filename
 {
-	[self gitWithArgs:@"checkout", @"--ours", filename, nil];
+	[self gitWithArgs:@"checkout", @"--ours",@"--", filename, nil];
 	return YES;
 }
 
 -(BOOL) chooseTheirs:(NSString*)filename
 {
-	[self gitWithArgs:@"checkout", @"--theirs", filename, nil];
+	[self gitWithArgs:@"checkout", @"--theirs", @"--",filename, nil];
 	return YES;
 }
 
 -(void) mergeTool:(NSString*)filename
 {
-    [self gitWithArgs:@"mergetool",@"-y", filename, nil];
+    [self gitWithArgs:@"mergetool",@"-y", @"--",filename, nil];
 }
 
 @end
