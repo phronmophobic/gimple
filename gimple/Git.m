@@ -269,7 +269,26 @@
 
 -(void) mergeTool:(NSString*)filename
 {
-    [self gitWithArgs:@"mergetool",@"-y", @"--",filename, nil];
+    NSTask* yesTask = [[[NSTask alloc] init] autorelease];
+    [yesTask setLaunchPath:@"/usr/bin/yes"];
+    [yesTask setArguments:[NSArray arrayWithObject:@"no"]];
+
+    
+	NSTask *task;
+    task = [[[NSTask alloc] init] autorelease];
+    [task setLaunchPath:[self gitExe]];
+    [task setCurrentDirectoryPath:repositoryPath];	
+	
+    [task setArguments:[NSArray arrayWithObjects:@"mergetool",@"-y",@"--",filename, nil]];
+    
+    NSPipe* pipe = [NSPipe pipe];
+    [yesTask setStandardOutput:pipe];
+    [task setStandardInput:pipe];
+    [yesTask launch];
+    [task launch];
+
+    [task waitUntilExit];
+
 }
 
 @end
