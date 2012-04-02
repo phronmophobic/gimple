@@ -26,12 +26,22 @@
     if ( !path ){
         path = @"/Users/adrian/workspace/gimple-test";
     }
-    // Insert code here to initialize your application
     [reposPathTextField setTitleWithMnemonic:path];
+    
+    NSString* workingOn = [[NSUserDefaults standardUserDefaults] valueForKey:@"workingOn"];
+    if ( workingOn ){
+        [workingOnTextField setTitleWithMnemonic:workingOn];
+    }
 
 	git = [[[Git alloc] initWithRepositoryPath:[reposPathTextField stringValue]] autorelease];
 	git.syncDelegate = self;
 	git.progressDelegate = self;
+    
+    workingOnTextField.delegate = self;
+}
+
+- (void)controlTextDidChange:(NSNotification *)notification{
+    [[NSUserDefaults standardUserDefaults] setValue:[workingOnTextField stringValue] forKey:@"workingOn"];
 }
 
 - (IBAction)updateRepositoryPath:(id)sender{

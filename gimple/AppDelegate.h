@@ -10,7 +10,7 @@
 
 #import "Git.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate, GitSyncDelegate>{
+@interface AppDelegate : NSObject <NSApplicationDelegate, GitSyncDelegate,NSTextFieldDelegate>{
     IBOutlet NSTextField* reposPathTextField;
 	IBOutlet NSTextField* workingOnTextField;
 	IBOutlet NSProgressIndicator* progressBar;
