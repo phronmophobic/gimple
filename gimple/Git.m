@@ -93,7 +93,7 @@
     //						 nil] autorelease];
 	
     //	[self performSelector:@selector(systemCommand:) onThread:thread withObject:dict waitUntilDone:NO];
-	return [self systemCommand:@"/usr/bin/git" curDir:repositoryPath args:args];
+	return [self systemCommand:[self gitExe] curDir:repositoryPath args:args];
 }
 
 - (NSString*) gitWithArgs:(NSString*)arg1,...{
@@ -121,7 +121,7 @@
 
 -(NSString*) gitExe
 {
-	return @"/usr/bin/git";
+	return [[NSBundle mainBundle] pathForResource:@"git" ofType:@""];;
 }
 
 

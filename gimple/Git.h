@@ -41,6 +41,7 @@ typedef NSObject<GitSyncDelegate> GitSyncDelegate;
 
 -(id) initWithRepositoryPath:(NSString*)repositoryPath_;
 
+-(NSString*) gitExe;
 -(void) sync;
 -(void) commit:(NSString*)message;
 -(BOOL) chooseMine:(NSString*)filename;

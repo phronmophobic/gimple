@@ -10,6 +10,8 @@
 		0D13D05014E767840036861F /* Git.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D13D04F14E767830036861F /* Git.m */; };
 		0D13D05F14E7749E0036861F /* ConflictViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D13D05D14E7749E0036861F /* ConflictViewController.m */; };
 		0D13D06014E7749E0036861F /* ConflictViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D13D05E14E7749E0036861F /* ConflictViewController.xib */; };
+		3A1A8EFC15685F30004F6848 /* git in Resources */ = {isa = PBXBuildFile; fileRef = 3A1A8EFB15685F30004F6848 /* git */; };
+		3A1A8EFF156863F1004F6848 /* GIT_LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 3A1A8EFE156863F1004F6848 /* GIT_LICENSE */; };
 		3A6DDEEE14E73C4000010EA2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6DDEED14E73C4000010EA2 /* Cocoa.framework */; };
 		3A6DDEF814E73C4000010EA2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A6DDEF614E73C4000010EA2 /* InfoPlist.strings */; };
 		3A6DDEFA14E73C4000010EA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6DDEF914E73C4000010EA2 /* main.m */; };
@@ -38,6 +40,8 @@
 		0D13D05C14E7749E0036861F /* ConflictViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConflictViewController.h; sourceTree = "<group>"; };
 		0D13D05D14E7749E0036861F /* ConflictViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConflictViewController.m; sourceTree = "<group>"; };
 		0D13D05E14E7749E0036861F /* ConflictViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConflictViewController.xib; sourceTree = "<group>"; };
+		3A1A8EFB15685F30004F6848 /* git */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = git; sourceTree = "<group>"; };
+		3A1A8EFE156863F1004F6848 /* GIT_LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GIT_LICENSE; sourceTree = "<group>"; };
 		3A6DDEE914E73C4000010EA2 /* gimple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gimple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6DDEED14E73C4000010EA2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		3A6DDEF014E73C4000010EA2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -80,6 +84,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A1A8EFA15685F30004F6848 /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				3A1A8EFB15685F30004F6848 /* git */,
+				3A1A8EFE156863F1004F6848 /* GIT_LICENSE */,
+			);
+			path = bin;
+			sourceTree = SOURCE_ROOT;
+		};
 		3A6DDEDE14E73C4000010EA2 = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +135,7 @@
 		3A6DDEF314E73C4000010EA2 /* gimple */ = {
 			isa = PBXGroup;
 			children = (
+				3A1A8EFA15685F30004F6848 /* bin */,
 				0D13D04E14E767830036861F /* Git.h */,
 				0D13D04F14E767830036861F /* Git.m */,
 				3A6DDEFF14E73C4000010EA2 /* AppDelegate.h */,
@@ -240,6 +254,8 @@
 				3A6DDEFE14E73C4000010EA2 /* Credits.rtf in Resources */,
 				3A6DDF0414E73C4100010EA2 /* MainMenu.xib in Resources */,
 				0D13D06014E7749E0036861F /* ConflictViewController.xib in Resources */,
+				3A1A8EFC15685F30004F6848 /* git in Resources */,
+				3A1A8EFF156863F1004F6848 /* GIT_LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
